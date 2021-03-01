@@ -12,8 +12,12 @@ export default function Countdown() {
     const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split('');
 
     useEffect(() => {
-        
-    }, [active]);
+        if(active && time > 0){
+            setTimeout(() => {
+                setTime(time - 1);
+            }, 1000);
+        }
+    }, [active, time]);
 
     function startCountdown() {
         setActive(true);
